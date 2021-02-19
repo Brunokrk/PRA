@@ -1,3 +1,5 @@
+//Como não conhecia o algoritmo de levenshtein, utilizei como fonte para enteder este vídeo
+//https://www.youtube.com/watch?v=MiqoA-yF-0M
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,7 +15,6 @@ int main(){
     matriz = Aloca_Matriz(strlen(word1)+1, strlen(word2)+1);
     pontuaMatriz(matriz, strlen(word1)+1, strlen(word2)+1, word1, word2);
     Imprime_Matriz(matriz, strlen(word1)+1, strlen(word2)+1 );
-
 }
 
 int **Aloca_Matriz(int lines, int columns)
@@ -48,6 +49,8 @@ int Imprime_Matriz(int **Matriz, int lines, int columns)
         }
         printf("\n");
     }
+    printf("Qtd passos: %d", Matriz[lines-1][columns-1]);
+
     return 0;
 }
 
