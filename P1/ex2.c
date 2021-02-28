@@ -10,8 +10,8 @@ void pontuaMatriz(int **matriz, int lines, int columns, const char *str1, const 
 int main(){
 
     int **matriz;
-    const char word1[] = "benyam";
-    const char word2[] = "ephrem";
+    const char word1[] = "exercito";
+    const char word2[] = "exercicio";
     matriz = Aloca_Matriz(strlen(word1)+1, strlen(word2)+1);
     pontuaMatriz(matriz, strlen(word1)+1, strlen(word2)+1, word1, word2);
     Imprime_Matriz(matriz, strlen(word1)+1, strlen(word2)+1 );
