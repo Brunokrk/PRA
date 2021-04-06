@@ -1,5 +1,5 @@
 import random
-arquivo = open("arqs//pior_caso.txt", 'w')
+arquivo = open("inputs//pior_caso.txt", 'w')
 
 values = []
 for i in range(100):
