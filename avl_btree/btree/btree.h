@@ -20,7 +20,7 @@ typedef struct arvoreB
 ArvoreB *criaArvore(int);
 No *criaNo(ArvoreB *);
 void percorreArvore(No *);
-int pesquisaBinaria(No *, int);
+int pesquisaBinaria(ArvoreB *arvore, No *, int);
 int localizaChave(ArvoreB *, int);
 No *localizaNo(ArvoreB *, int);
 void adicionaChaveNo(ArvoreB *, No *, No *, int);
@@ -34,7 +34,7 @@ ArvoreB *criaArvore(int ordem)
     ArvoreB *a = malloc(sizeof(ArvoreB));
     a->ordem = ordem;
     a->raiz = criaNo(a);
-
+    a->contador = 0;
     return a;
 }
 
@@ -70,11 +70,12 @@ void percorreArvore(No *no)
     }
 }
 
-int pesquisaBinaria(No *no, int chave)
+int pesquisaBinaria(ArvoreB *arvore, No *no, int chave)
 {
     int inicio = 0, fim = no->total - 1, meio;
     while (inicio <= fim)
     {
+        arvore->contador++;
         meio = (inicio + fim) / 2;
         if (no->chaves[meio] == chave)
         {
@@ -98,8 +99,8 @@ int localizaChave(ArvoreB *arvore, int chave)
 
     while (no != NULL)
     {
-        int i = pesquisaBinaria(no, chave);
-
+        int i = pesquisaBinaria(arvore, no, chave);
+        arvore->contador++;
         if (i < no->total && no->chaves[i] == chave)
         {
             return 1; //encontrou
@@ -119,7 +120,8 @@ No *localizaNo(ArvoreB *arvore, int chave)
 
     while (no != NULL)
     {
-        int i = pesquisaBinaria(no, chave);
+        arvore->contador++;
+        int i = pesquisaBinaria(arvore, no, chave);
 
         if (no->filhos[i] == NULL)
             return no; //encontrou nó
@@ -132,10 +134,11 @@ No *localizaNo(ArvoreB *arvore, int chave)
 
 void adicionaChaveNo(ArvoreB *arvore, No *no, No *novo, int chave)
 {
-    int i = pesquisaBinaria(no, chave);
+    int i = pesquisaBinaria(arvore, no, chave);
 
     for (int j = no->total - 1; j >= i; j--)
     {
+        arvore->contador++;
         no->chaves[j + 1] = no->chaves[j];
         no->filhos[j + 2] = no->filhos[j + 1];
     }
@@ -159,9 +162,11 @@ No *divideNo(ArvoreB *arvore, No *no)
 
     for (int i = meio + 1; i < no->total; i++)
     {
+        arvore->contador++;
         novo->filhos[novo->total] = no->filhos[i];
         novo->chaves[novo->total] = no->chaves[i];
         if (novo->filhos[novo->total] != NULL)
+            //arvore->contador++;
             novo->filhos[novo->total]->pai = novo;
 
         novo->total++;
@@ -177,14 +182,15 @@ No *divideNo(ArvoreB *arvore, No *no)
 void adicionaChaveRecursivo(ArvoreB *arvore, No *no, No *novo, int chave)
 {
     adicionaChaveNo(arvore, no, novo, chave);
-
+    arvore->contador++;
     if (transbordo(arvore, no))
     {
         int promovido = no->chaves[arvore->ordem];
         No *novo = divideNo(arvore, no);
 
         if (no->pai == NULL)
-        {
+        {   
+            arvore->contador++;
             No *pai = criaNo(arvore);
             pai->filhos[0] = no;
             adicionaChaveNo(arvore, pai, novo, promovido);
