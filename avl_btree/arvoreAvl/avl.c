@@ -12,7 +12,6 @@ typedef struct no
 typedef struct arvore
 {
     struct no *raiz;
-    int count;
 } Arvore;
 
 void balanceamento(Arvore *, No *);
@@ -91,8 +90,8 @@ No *adicionar(Arvore *arvore, int valor)
     else
     {
         No *no = adicionarNo(arvore->raiz, valor);
+        printf("Entrou aqui");
         balanceamento(arvore, no);
-
         return no;
     }
 }
@@ -194,11 +193,13 @@ void balanceamento(Arvore *arvore, No *no)
 {
     while (no != NULL)
     {
+        printf("Entrou balanceamento");
         int fator = fb(no);
-
+        printf("fb: %d", fator);
         if (fator > 1)
         { //árvore mais pesada para esquerda
             //rotação para a direita
+            printf("\nentrou if fator >1");
             if (fb(no->esquerda) > 0)
             {
                 printf("RSD(%d)\n", no->valor);
@@ -213,6 +214,7 @@ void balanceamento(Arvore *arvore, No *no)
         else if (fator < -1)
         { //árvore mais pesada para a direita
             //rotação para a esquerda
+            printf("\nentrou if fator < -1");
             if (fb(no->direita) < 0)
             {
                 printf("RSE(%d)\n", no->valor);
@@ -232,9 +234,10 @@ void balanceamento(Arvore *arvore, No *no)
 int altura(No *no)
 {
     int esquerda = 0, direita = 0;
-
+    //printf("\n Entrou Altura");
     if (no->esquerda != NULL)
     {
+        //printf("altura: %d", esquerda);
         esquerda = altura(no->esquerda) + 1;
     }
 
@@ -243,20 +246,28 @@ int altura(No *no)
         direita = altura(no->direita) + 1;
     }
 
-    return esquerda > direita ? esquerda : direita; //max(esquerda,direita)
+    if (esquerda > direita){
+        return esquerda;
+    }else{
+        return direita;
+    }
+    //return esquerda > direita ? esquerda : direita; //max(esquerda,direita)
 }
 
 int fb(No *no)
 {
     int esquerda = 0, direita = 0;
-
+    printf("\nEntrou fb");
     if (no->esquerda != NULL)
     {
+        printf("\nEntrou no->esquerda != NULL");
         esquerda = altura(no->esquerda) + 1;
+        
     }
 
     if (no->direita != NULL)
     {
+        printf("\nEntrou no->direita != NULL");
         direita = altura(no->direita) + 1;
     }
 
@@ -338,12 +349,11 @@ No *rdd(Arvore *arvore, No *no)
 int main()
 {
     Arvore *a = criar();
-
-    for (int i = 1; i <= 7; i++)
+    int i;
+    for (i = 1; i <= 7; i++)
     {
         adicionar(a, i);
     }
-
     printf("In-order: ");
     percorrerProfundidadeInOrder(a->raiz, visitar);
     printf("\n");
