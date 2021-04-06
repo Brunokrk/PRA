@@ -176,7 +176,7 @@ No *divideNo(ArvoreB *arvore, No *no)
 
 void adicionaChaveRecursivo(ArvoreB *arvore, No *no, No *novo, int chave)
 {
-    adicionaChaveNo(no, novo, chave);
+    adicionaChaveNo(arvore, no, novo, chave);
 
     if (transbordo(arvore, no))
     {
@@ -187,7 +187,7 @@ void adicionaChaveRecursivo(ArvoreB *arvore, No *no, No *novo, int chave)
         {
             No *pai = criaNo(arvore);
             pai->filhos[0] = no;
-            adicionaChaveNo(pai, novo, promovido);
+            adicionaChaveNo(arvore, pai, novo, promovido);
 
             no->pai = pai;
             novo->pai = pai;
