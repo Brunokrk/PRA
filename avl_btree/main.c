@@ -7,7 +7,7 @@
 
 //PIOR CASO -> valores ordenados, não necessita de 10 execuções para comprovar valdiade estatística
 //MEDIO CASO -> valores aleatórios, necessita 10 execuções para validade estatística
-void executaPiorCaso();
+void executaPiorCasoBtree();
 void geraCasoMedio();
 void geraMedioCaso()
 {
@@ -24,7 +24,7 @@ void geraMedioCaso()
     fclose(medio_caso_in);
 }
 
-void executaPiorCaso()
+void executaPiorCasoBtree()
 {
     //PIOR_CASO -> BTREE
     char valor_str[4];
@@ -53,7 +53,7 @@ void executaPiorCaso()
     printf("\n");
 }
 
-void executaMedioCaso()
+void executaMedioCasoBtree()
 {
     ArvoreB *arvore1 = criaArvore(5);
     ArvoreB *arvore2 = criaArvore(5);
@@ -145,15 +145,13 @@ int main()
     //gcc.exe -Wall -g main.c arvoreAvl/avlV3.c btree/btree.c -o main.exe
 
     //PIOR CASO ->BTREE
-    //chaves deste caso são geradas por script Python
-    //executaPiorCaso();
+    executaPiorCasoBtree();
 
     //MEDIO CASO -> BTREE
     //gerando chaves aleatórias
-    //geraMedioCaso();
-    //executaMedioCaso();
+    geraMedioCaso();
+    executaMedioCasoBtree();
 
-        //struct Node *root = NULL;
     AvlTree *arvore = criar();
     arvore->root = adiciona(arvore, arvore->root , 10);
     arvore->root = adiciona(arvore, arvore->root , 20);
@@ -161,6 +159,7 @@ int main()
     arvore->root = adiciona(arvore, arvore->root , 40);
     arvore->root = adiciona(arvore, arvore->root , 50);
     arvore->root = adiciona(arvore, arvore->root , 25);
+    arvore->root = adiciona(arvore, arvore->root , 20);
 
     printf("Preorder traversal of the constructed AVL"
          " tree is \n");
