@@ -1,3 +1,4 @@
+#apenas gera um arquivo de inteiros aleatórios ordenados
 import random
 arquivo = open("inputs//pior_caso.txt", 'w')
 
