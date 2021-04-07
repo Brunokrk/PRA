@@ -138,18 +138,20 @@ void preOrder(struct Node *root)
     }
 }
 
-/*
+
 int main()
 {
     //struct Node *root = NULL;
     AvlTree *arvore = criar();
+    
     arvore->root = adiciona(arvore, arvore->root , 10);
     arvore->root = adiciona(arvore, arvore->root , 20);
     arvore->root = adiciona(arvore, arvore->root , 30);
     arvore->root = adiciona(arvore, arvore->root , 40);
     arvore->root = adiciona(arvore, arvore->root , 50);
     arvore->root = adiciona(arvore, arvore->root , 25);
-
+    
+   
   printf("Preorder traversal of the constructed AVL"
          " tree is \n");
   preOrder(arvore->root);
@@ -157,4 +159,3 @@ int main()
   return 0;
 
 }
-*/

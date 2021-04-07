@@ -49,12 +49,12 @@ void geraMedioCaso()
 void executaPiorCasoAvl()
 {
 
-    char valor_str[4];
+    //char valor_str[4];
     AvlTree *arvoreAvl = criar();
 
-    FILE *pior_caso_in = fopen(PIOR_CASO_IN, "r");
+    //FILE *pior_caso_in = fopen(PIOR_CASO_IN, "r");
     FILE *pior_caso_out = fopen(PIOR_CASO_OUT_AVL, "w");
-
+    /*
     while (fgets(valor_str, 4, pior_caso_in) != NULL)
     {
         printf("%d\n", atoi(valor_str));
@@ -64,9 +64,14 @@ void executaPiorCasoAvl()
             printf("%d \n", arvoreAvl->contador);
             fprintf(pior_caso_out, "%d\n", arvoreAvl->contador);
         }
+    }*/
+
+    for (int i =1; i<=100; i++){
+        arvoreAvl->root = adiciona(arvoreAvl, arvoreAvl->root, i);
+        fprintf(pior_caso_out, "%d\n", arvoreAvl->contador);
     }
     fclose(pior_caso_out);
-    fclose(pior_caso_in);
+    //fclose(pior_caso_in);
 }
 
 void executaPiorCasoBtree()
