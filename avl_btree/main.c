@@ -12,23 +12,26 @@
 void executaPiorCasoBtree();
 void executaMedioCasoBtree();
 void executaPiorCasoAvl();
-void executaMedioCasoBtree();
+void executaMedioCasoAvl();
 void geraMedioCaso();
 
 int main()
 {
     //gcc.exe -Wall -g main.c arvoreAvl/avlV3.c btree/btree.c -o main.exe
+    geraMedioCaso();
+    //pior caso gerado por script python ->gambiarra infeliz
 
     //PIOR CASO ->BTREE
     executaPiorCasoBtree();
 
     //MEDIO CASO -> BTREE
-    //gerando chaves aleatórias
-    geraMedioCaso();
     executaMedioCasoBtree();
 
     //PIOR CASO ->AVL
     executaPiorCasoAvl();
+
+    //MEDIO CASO -> AVL
+    executaMedioCasoAvl();
 }
 
 void geraMedioCaso()
@@ -49,12 +52,12 @@ void geraMedioCaso()
 void executaPiorCasoAvl()
 {
 
-    //char valor_str[4];
+    char valor_str[4];
     AvlTree *arvoreAvl = criar();
 
-    //FILE *pior_caso_in = fopen(PIOR_CASO_IN, "r");
+    FILE *pior_caso_in = fopen(PIOR_CASO_IN, "r");
     FILE *pior_caso_out = fopen(PIOR_CASO_OUT_AVL, "w");
-    /*
+
     while (fgets(valor_str, 4, pior_caso_in) != NULL)
     {
         printf("%d\n", atoi(valor_str));
@@ -64,14 +67,89 @@ void executaPiorCasoAvl()
             printf("%d \n", arvoreAvl->contador);
             fprintf(pior_caso_out, "%d\n", arvoreAvl->contador);
         }
-    }*/
-
-    for (int i =1; i<=100; i++){
-        arvoreAvl->root = adiciona(arvoreAvl, arvoreAvl->root, i);
-        fprintf(pior_caso_out, "%d\n", arvoreAvl->contador);
     }
+
     fclose(pior_caso_out);
-    //fclose(pior_caso_in);
+    fclose(pior_caso_in);
+}
+
+void executaMedioCasoAvl()
+{
+    FILE *medio_caso_in = fopen(MEDIO_CASO_IN, "r");
+    FILE *medio_caso_out = fopen(MEDIO_CASO_OUT_AVL, "w");
+    int linha = 1;
+    char valor_str[4];
+
+    AvlTree *arvoreAvl1 = criar();
+    AvlTree *arvoreAvl2 = criar();
+    AvlTree *arvoreAvl3 = criar();
+    AvlTree *arvoreAvl4 = criar();
+    AvlTree *arvoreAvl5 = criar();
+    AvlTree *arvoreAvl6 = criar();
+    AvlTree *arvoreAvl7 = criar();
+    AvlTree *arvoreAvl8 = criar();
+    AvlTree *arvoreAvl9 = criar();
+    AvlTree *arvoreAvl10 = criar();
+
+    while (fgets(valor_str, 4, medio_caso_in) != NULL)
+    {
+        if (atoi(valor_str) != 0)
+        {
+            if (linha <= 100)
+            {
+                arvoreAvl1->root = adiciona(arvoreAvl1, arvoreAvl1->root, atoi(valor_str));
+                fprintf(medio_caso_out, "1, %d \n", arvoreAvl1->contador);
+            }
+            if (linha <= 200 && linha > 100)
+            {
+                arvoreAvl2->root = adiciona(arvoreAvl2, arvoreAvl2->root, atoi(valor_str));
+                fprintf(medio_caso_out, "2, %d \n", arvoreAvl2->contador);
+            }
+            if (linha <= 300 && linha > 200)
+            {
+                arvoreAvl3->root = adiciona(arvoreAvl3, arvoreAvl3->root, atoi(valor_str));
+                fprintf(medio_caso_out, "3, %d \n", arvoreAvl3->contador);
+            }
+            if (linha <= 400 && linha > 300)
+            {
+                arvoreAvl4->root = adiciona(arvoreAvl4, arvoreAvl4->root, atoi(valor_str));
+                fprintf(medio_caso_out, "4, %d \n", arvoreAvl4->contador);
+            }
+            if (linha <= 500 && linha > 400)
+            {
+                arvoreAvl5->root = adiciona(arvoreAvl5, arvoreAvl5->root, atoi(valor_str));
+                fprintf(medio_caso_out, "5, %d \n", arvoreAvl5->contador);
+            }
+            if (linha <= 600 && linha > 500)
+            {
+                arvoreAvl6->root = adiciona(arvoreAvl6, arvoreAvl6->root, atoi(valor_str));
+                fprintf(medio_caso_out, "6, %d \n", arvoreAvl6->contador);
+            }
+            if (linha <= 700 && linha > 600)
+            {
+                arvoreAvl7->root = adiciona(arvoreAvl7, arvoreAvl7->root, atoi(valor_str));
+                fprintf(medio_caso_out, "7, %d \n", arvoreAvl7->contador);
+            }
+            if (linha <= 800 && linha > 700)
+            {
+                arvoreAvl9->root = adiciona(arvoreAvl8, arvoreAvl8->root, atoi(valor_str));
+                fprintf(medio_caso_out, "8, %d \n", arvoreAvl8->contador);
+            }
+            if (linha <= 900 && linha > 800)
+            {
+                arvoreAvl9->root = adiciona(arvoreAvl9, arvoreAvl9->root, atoi(valor_str));
+                fprintf(medio_caso_out, "9, %d \n", arvoreAvl9->contador);
+            }
+            if (linha <= 1000 && linha > 900)
+            {
+                arvoreAvl10->root = adiciona(arvoreAvl10, arvoreAvl10->root, atoi(valor_str));
+                fprintf(medio_caso_out, "10, %d \n", arvoreAvl10->contador);
+            }
+            linha++;
+        }
+    }
+    fclose(medio_caso_in);
+    fclose(medio_caso_out);
 }
 
 void executaPiorCasoBtree()
@@ -123,19 +201,6 @@ void executaMedioCasoBtree()
     medio_caso_in = fopen(MEDIO_CASO_IN, "r");
 
     FILE *medio_caso_out_btree = fopen(MEDIO_CASO_OUT_BTREE, "w");
-
-    /*
-    FILE *medio_caso_out_btree1 = fopen("medio_caso_btree1", "w");
-    FILE *medio_caso_out_btree2 = fopen("medio_caso_btree2", "w");
-    FILE *medio_caso_out_btree3 = fopen("medio_caso_btree3", "w");
-    FILE *medio_caso_out_btree4 = fopen("medio_caso_btree4", "w");
-    FILE *medio_caso_out_btree5 = fopen("medio_caso_btree5", "w");
-    FILE *medio_caso_out_btree6 = fopen("medio_caso_btree6", "w");
-    FILE *medio_caso_out_btree7 = fopen("medio_caso_btree7", "w");
-    FILE *medio_caso_out_btree8 = fopen("medio_caso_btree8", "w");
-    FILE *medio_caso_out_btree9 = fopen("medio_caso_btree9", "w");
-    FILE *medio_caso_out_btree10 = fopen("medio_caso_btree10", "w");
-    */
 
     while (fgets(valor_str, 4, medio_caso_in) != NULL)
     {
@@ -194,4 +259,6 @@ void executaMedioCasoBtree()
             linha++;
         }
     }
+    fclose(medio_caso_in);
+    fclose(medio_caso_out_btree);
 }
