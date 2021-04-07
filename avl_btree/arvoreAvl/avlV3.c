@@ -95,18 +95,21 @@ struct Node *adiciona(AvlTree *A, struct Node *node, int key)
     int balance = fatorBalanceamento(node);
 
     //então se necessário realiza o balanceamento
-
+    A->contador++;
     //rsd
     if (balance > 1 && key < node->left->key)
+        A->contador++;
         return rightRotate(A, node);
 
     //rse
     if (balance < -1 && key > node->right->key)
+        A->contador++;
         return leftRotate(A, node);
 
     //rdd
     if (balance > 1 && key > node->left->key)
     {
+        A->contador++;
         node->left = leftRotate(A, node->left);
         return rightRotate(A, node);
     }
@@ -114,6 +117,7 @@ struct Node *adiciona(AvlTree *A, struct Node *node, int key)
     //rde
     if (balance < -1 && key < node->right->key)
     {
+        A->contador++;
         node->right = rightRotate(A, node->right);
         return leftRotate(A, node);
     }
