@@ -25,8 +25,7 @@ AvlTree *criar()
 
 Node *newNode(int key)
 {
-    struct Node *node = (struct Node *)
-        malloc(sizeof(struct Node));
+    struct Node *node = (struct Node *)malloc(sizeof(struct Node));
     node->key = key;
     node->left = NULL;
     node->right = NULL;
@@ -97,14 +96,16 @@ struct Node *adiciona(AvlTree *A, struct Node *node, int key)
     //então se necessário realiza o balanceamento
     A->contador++;
     //rsd
-    if (balance > 1 && key < node->left->key)
+    if (balance > 1 && key < node->left->key){
         A->contador++;
         return rightRotate(A, node);
+    }
 
     //rse
-    if (balance < -1 && key > node->right->key)
+    if (balance < -1 && key > node->right->key){
         A->contador++;
         return leftRotate(A, node);
+    }
 
     //rdd
     if (balance > 1 && key > node->left->key)
@@ -138,7 +139,7 @@ void preOrder(struct Node *root)
     }
 }
 
-
+/*
 int main()
 {
     //struct Node *root = NULL;
@@ -159,3 +160,4 @@ int main()
   return 0;
 
 }
+*/
