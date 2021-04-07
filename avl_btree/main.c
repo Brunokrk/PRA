@@ -132,7 +132,7 @@ void executaMedioCasoAvl()
             }
             if (linha <= 800 && linha > 700)
             {
-                arvoreAvl9->root = adiciona(arvoreAvl8, arvoreAvl8->root, atoi(valor_str));
+                arvoreAvl8->root = adiciona(arvoreAvl8, arvoreAvl8->root, atoi(valor_str));
                 fprintf(medio_caso_out, "8, %d \n", arvoreAvl8->contador);
             }
             if (linha <= 900 && linha > 800)
