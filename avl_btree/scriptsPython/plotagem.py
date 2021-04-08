@@ -123,6 +123,6 @@ if __name__ == "__main__":
     sub_mediocaso.set_xscale('log')
     sub_mediocaso.grid(True)
     sub_piorcaso.grid(True)
-    plt.savefig("C:\\Users\\pires\\Documents\\GitHub\\PRA\\avl_btree\\graficos\\analise.png")
+    #plt.savefig("C:\\Users\\pires\\Documents\\GitHub\\PRA\\avl_btree\\graficos\\analise.png")
 
-    #plt.show()
+    plt.show()
