@@ -55,7 +55,6 @@ struct Node *leftRotate(AvlTree *A, struct Node *x)
     struct Node *y = x->right;
     struct Node *T2 = y->left;
 
-    // Perform rotation
     y->left = x;
     x->right = T2;
 
@@ -96,13 +95,15 @@ struct Node *adiciona(AvlTree *A, struct Node *node, int key)
     //então se necessário realiza o balanceamento
     A->contador++;
     //rsd
-    if (balance > 1 && key < node->left->key){
+    if (balance > 1 && key < node->left->key)
+    {
         A->contador++;
         return rightRotate(A, node);
     }
 
     //rse
-    if (balance < -1 && key > node->right->key){
+    if (balance < -1 && key > node->right->key)
+    {
         A->contador++;
         return leftRotate(A, node);
     }
@@ -126,9 +127,6 @@ struct Node *adiciona(AvlTree *A, struct Node *node, int key)
     return node;
 }
 
-// A utility function to print preorder traversal
-// of the tree.
-// The function also prints altura of every node
 void preOrder(struct Node *root)
 {
     if (root != NULL)
@@ -138,26 +136,3 @@ void preOrder(struct Node *root)
         preOrder(root->right);
     }
 }
-
-/*
-int main()
-{
-    //struct Node *root = NULL;
-    AvlTree *arvore = criar();
-    
-    arvore->root = adiciona(arvore, arvore->root , 10);
-    arvore->root = adiciona(arvore, arvore->root , 20);
-    arvore->root = adiciona(arvore, arvore->root , 30);
-    arvore->root = adiciona(arvore, arvore->root , 40);
-    arvore->root = adiciona(arvore, arvore->root , 50);
-    arvore->root = adiciona(arvore, arvore->root , 25);
-    
-   
-  printf("Preorder traversal of the constructed AVL"
-         " tree is \n");
-  preOrder(arvore->root);
-
-  return 0;
-
-}
-*/
