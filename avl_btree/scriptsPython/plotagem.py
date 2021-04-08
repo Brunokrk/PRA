@@ -29,26 +29,6 @@ def plotaGraficoPiorCaso():
         cont_chaves += 1
 
     return x_avl, y_avl, x_btree, y_btree
-    # plotando AVL
-    #plt.scatter(x_avl, y_avl, color='blue')
-    #axs[0].plt.plot(x_avl, y_avl, color='blue', label='AVL-Tree')
-
-    # plotando BTREE
-    #plt.scatter(x_btree, y_btree, color='red')
-    #axs[0].plt.plot(x_btree, y_btree, color='red', label='B-Tree')
-
-    #axs[0].plt.title('Gráfico para pior caso, chaves ordenadas')
-    # Eixo X
-    #axs[0].plt.xlabel('Quantidade de Chaves')
-    # Eixo Y
-    #axs[0].plt.ylabel('Quantidade de Operações')
-
-    # axs[0].plt.grid(True)
-    # axs[0].plt.legend()
-    # axs[0].plt.xscale('log')
-    # plt.show()
-    # plt.savefig(
-    #    "C:\\Users\\pires\\Documents\\GitHub\\PRA\\avl_btree\\graficos\\pior_caso.png")
 
 
 def plotaGraficoMedioCaso():

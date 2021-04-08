@@ -6,6 +6,7 @@
 #define MEDIO_CASO_OUT_BTREE "outputs//medio_caso_out_btree.txt"
 #define PIOR_CASO_OUT_AVL "outputs//pior_caso_out_avl.txt"
 #define MEDIO_CASO_OUT_AVL "outputs//medio_caso_out_avl.txt"
+#define ORDEM 10
 
 //PIOR CASO -> valores ordenados, não necessita de 10 execuções para comprovar valdiade estatística
 //MEDIO CASO -> valores aleatórios, necessita 10 execuções para validade estatística
@@ -32,6 +33,8 @@ int main()
 
     //MEDIO CASO -> AVL
     executaMedioCasoAvl();
+
+    printf("DADOS GERADOS, EXECUTAR SCRIPT PYTHON PARA GERAR GRÁFICOS");
 }
 
 void geraMedioCaso()
@@ -60,11 +63,11 @@ void executaPiorCasoAvl()
 
     while (fgets(valor_str, 4, pior_caso_in) != NULL)
     {
-        printf("%d\n", atoi(valor_str));
+        //printf("%d\n", atoi(valor_str));
         if (atoi(valor_str) != 0)
         {
             arvoreAvl->root = adiciona(arvoreAvl, arvoreAvl->root, atoi(valor_str));
-            printf("%d \n", arvoreAvl->contador);
+            //printf("%d \n", arvoreAvl->contador);
             fprintf(pior_caso_out, "%d\n", arvoreAvl->contador);
         }
     }
@@ -157,7 +160,7 @@ void executaPiorCasoBtree()
     //PIOR_CASO -> BTREE
     char valor_str[4];
     //char tam[4];
-    ArvoreB *arvoreB = criaArvore(5);
+    ArvoreB *arvoreB = criaArvore(ORDEM);
 
     FILE *pior_caso_in; //input
     pior_caso_in = fopen(PIOR_CASO_IN, "r");
@@ -177,22 +180,22 @@ void executaPiorCasoBtree()
     fclose(pior_caso_in);
     fclose(pior_caso_out_btree);
     //percorreArvore(arvoreB->raiz);
-    printf("Operacoes Pior Caso Btree: %d", arvoreB->contador);
-    printf("\n");
+    //printf("Operacoes Pior Caso Btree: %d", arvoreB->contador);
+    //printf("\n");
 }
 
 void executaMedioCasoBtree()
 {
-    ArvoreB *arvore1 = criaArvore(5);
-    ArvoreB *arvore2 = criaArvore(5);
-    ArvoreB *arvore3 = criaArvore(5);
-    ArvoreB *arvore4 = criaArvore(5);
-    ArvoreB *arvore5 = criaArvore(5);
-    ArvoreB *arvore6 = criaArvore(5);
-    ArvoreB *arvore7 = criaArvore(5);
-    ArvoreB *arvore8 = criaArvore(5);
-    ArvoreB *arvore9 = criaArvore(5);
-    ArvoreB *arvore10 = criaArvore(5);
+    ArvoreB *arvore1 = criaArvore(ORDEM);
+    ArvoreB *arvore2 = criaArvore(ORDEM);
+    ArvoreB *arvore3 = criaArvore(ORDEM);
+    ArvoreB *arvore4 = criaArvore(ORDEM);
+    ArvoreB *arvore5 = criaArvore(ORDEM);
+    ArvoreB *arvore6 = criaArvore(ORDEM);
+    ArvoreB *arvore7 = criaArvore(ORDEM);
+    ArvoreB *arvore8 = criaArvore(ORDEM);
+    ArvoreB *arvore9 = criaArvore(ORDEM);
+    ArvoreB *arvore10 = criaArvore(ORDEM);
 
     char valor_str[4];
     int linha = 1;
