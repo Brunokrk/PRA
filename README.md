@@ -13,6 +13,6 @@ Data de entrega: 08/04/2021
 Para executar o programa, basta compilar e executar o arquivo "main.c" no compilador do seu Sistema Operacional, o código em C irá gerar como saída quatro arquivos txt, contendo a contagem de operações de inserção nas árvores no pior e médio caso.
 
 Após gerar tais arquivos, o script "plotagem.py" deve ser executado, ele irá gerar os gráficos
-comparativos entre as árvores Avl e Btree.
+comparativos entre as árvores Avl e Btree. A imagem do gráfico ficará salva na pasta "graficos".
 
 
